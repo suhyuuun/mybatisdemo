@@ -68,11 +68,12 @@
  		<result column="employee_id" property="employee_id" />
  		<result column="first_name" property="first_name" />
  		<association property="dept" javaType="part03.dto.DeptDTO">
- 			<result column="department_name" property="department_name" />
- 			<association property="ldto" javaType="part03.dto.LocDTO">
+ 			<result column="department_name" property="department_name" />	
+ 		</association>
+ 		
+ 		<association property="ldto" javaType="part03.dto.LocDTO">
  				<result column="city" property="city" />
  			</association>
- 		</association>
  	</resultMap>
  	
  	<select id="emp_dept_loc" resultMap="emp_dept_LocResult">
