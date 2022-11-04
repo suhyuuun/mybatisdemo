@@ -11,11 +11,9 @@ public class EmpDTO {
 	}
 
 	
-	
 	public LocDTO getLdto() {
 		return ldto;
 	}
-
 
 
 	public void setLdto(LocDTO ldto) {
