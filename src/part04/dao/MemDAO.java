@@ -40,4 +40,5 @@ public class MemDAO {
 	public List<MemDTO> allMethod(){
 		return session.selectList("per.all");
 	}
+	
 }//end class
