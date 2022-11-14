@@ -20,5 +20,6 @@
  <mapper resource="part01/dao/empMapper.xml" />
  <mapper resource="part02/dao/memMapper.xml" />
  <mapper resource="part03/dao/joinMapper.xml" />
+ <mapper resource="part04/dao/memMapper.xml" />
  </mappers>
 </configuration>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace = "per">
+ 	<select id="all" resultType="part04.dto.MemDTO">
+ 		SELECT * FROM mem ORDER BY num
+ 	</select>
+ 	
+ 	<select id="keynum" resultType="java.lang.Integer" flushCache="true">
+ 		SELECT mem_num_seq.nextval
+ 		FROM dual;
+ 	</select>
+ 	<!-- 다중 insert -->
+ 	<!-- 
+ 		INSERT ALL 
+ 		INTO mem
+ 		VALUES(1,'홍길동', 30, '서울')
+ 		
+ 		INTO mem
+ 		VALUES(2, '유대리', 29, '경기')
+ 		
+ 		SELECT * FROM dual;
+ 	 -->
+ 	 
+ 	 <insert id="multiIns" parameterType="java.util.List">
+ 	 INSERT ALL
+ 	 <foreach collection="list" item="element" index="no"> <!-- list나 array로 받아올때는 위에 parameterType 작성안해도 무관 -->
+ 		INTO mem
+ 		VALUES(#{element.num}, #{element.name}, #{element.age}, #{element.loc})
+ 	 </foreach>
+ 	 SELECT * FROM dual
+ 	 </insert>
+ </mapper>
