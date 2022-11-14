@@ -10,7 +10,7 @@
  	
  	<select id="keynum" resultType="java.lang.Integer" flushCache="true">
  		SELECT mem_num_seq.nextval
- 		FROM dual;
+ 		FROM dual
  	</select>
  	<!-- 다중 insert -->
  	<!-- 
@@ -32,4 +32,29 @@
  	 </foreach>
  	 SELECT * FROM dual
  	 </insert>
+ 	 
+ 	 <!-- 다중 삭제 -->
+ 	 <delete id="multiDel">
+ 	 	DELETE FROM mem
+ 	 	WHERE num IN(
+ 	 		<foreach collection="list" item="element" separator=",">
+ 	 			#{element}
+ 	 		</foreach>
+ 	 	)
+ 	 </delete>
+ 	 
+ 	 <delete id="multiDel2">
+ 	 	DELETE FROM mem
+ 	 	WHERE num IN(
+ 	 		<foreach collection="array" item="element" separator=",">
+ 	 			#{element}
+ 	 		</foreach>
+ 	 	)
+ 	 </delete>
+ 	 
+ 	 <!-- dynamic if -->
+ 	 <select id="search" parameterType="part04.dto.MemDTO" resultType="part04.dto.MemDTO">
+ 	 	SELECT * FROM mem
+ 	 	
+ 	 </select>
  </mapper>

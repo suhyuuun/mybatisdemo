@@ -11,7 +11,19 @@ public class MemController {
 	public MemController() {
 		dao = new MemDAO();
 	}
+	
 	public List<MemDTO> selectProcess(){
 		return dao.allMethod();
 	}
+	
+	public int multiInsertProcess(List<MemDTO> list) {
+		for(MemDTO dto : list)
+			dto.setNum(dao.keyMethod());
+		return dao.multiInsertMethod(list);
+	}
+	
+	public int multiDeleteProcess(List<Integer> list) {
+		return dao.multiDeleteMethod(list);
+	}
+	
 }//end class
