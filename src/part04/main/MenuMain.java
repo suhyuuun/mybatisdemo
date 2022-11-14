@@ -33,12 +33,17 @@ public class MenuMain {
 //		List<MemDTO> searchList = mController.searchProcess(dto);
 //		display(searchList);
 		
-		MemDTO mt = new MemDTO();
-		mt.setNum(9);
-		mt.setName("홍재수");
-		mt.setAge(50);
-		int uptCnt = mController.multiUpdateProcess(mt);
-		System.out.printf("update Count:%d\n",uptCnt);
+		//수정
+//		MemDTO mt = new MemDTO();
+//		mt.setNum(9);
+//		mt.setName("홍재수");
+//		mt.setAge(50);
+//		int uptCnt = mController.multiUpdateProcess(mt);
+//		System.out.printf("update Count:%d\n",uptCnt);
+		
+//		int insCnt = mController.insertDataProcess(new MemDTO("돌쟁이",10,"부산"));
+		int insCnt = mController.insertDataProcess(new MemDTO("김수현",34));
+		System.out.printf("Insert Count:%d\n", insCnt);
 		
 		List<MemDTO> aList = mController.selectProcess();
 		display(aList);

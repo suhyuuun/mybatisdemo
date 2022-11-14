@@ -104,4 +104,19 @@
  	 	</trim>
  	 	WHERE num=#{num}
  	 </update>
+ 	 
+ 	 <!-- choose 동적 SQL 사용 -->
+ 	 <insert id="insData" parameterType="part04.dto.MemDTO">
+ 	 	INSERT INTO mem VALUES(mem_num_seq.nextval,#{name}, #{age}, 
+ 	 	<choose>
+ 	 		<when test="loc==null">
+ 	 			'test'
+ 	 		</when>
+ 	 		<otherwise>
+ 	 			#{loc}
+ 	 		</otherwise>
+ 	 		
+ 	 	</choose>
+ 	 	)
+ 	 </insert>
  </mapper>
