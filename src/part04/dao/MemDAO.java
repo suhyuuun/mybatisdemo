@@ -52,4 +52,14 @@ public class MemDAO {
 	public int multiDeleteMethod(List<Integer> list) {
 		return session.delete("per.multiDel", list);
 	}
+	
+	public List<MemDTO> searchMethod(MemDTO dto){
+		return session.selectList("per.search",dto);
+	}
+	
+	public int multiUpdateMethod(MemDTO dto) {
+		return session.update("per.multiUpt",dto);
+	}
+	
+	
 }//end class

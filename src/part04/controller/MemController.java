@@ -26,4 +26,12 @@ public class MemController {
 		return dao.multiDeleteMethod(list);
 	}
 	
+	public List<MemDTO> searchProcess(MemDTO dto){
+		return dao.searchMethod(dto);
+	}
+	
+	public int multiUpdateProcess(MemDTO dto) {
+		return dao.multiUpdateMethod(dto);
+	}
+	
 }//end class

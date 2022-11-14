@@ -55,6 +55,53 @@
  	 <!-- dynamic if -->
  	 <select id="search" parameterType="part04.dto.MemDTO" resultType="part04.dto.MemDTO">
  	 	SELECT * FROM mem
+ 	 	<!-- where을 요소로 넣어주면 불필요한 값을 제거해줌 -->
+ 	 <!--	<where> 
+ 	 		<if test="name!=null">
+ 	 			name like '%' || #{name} || '%'
+ 	 		</if>
+ 	 		<if test="age!=0">
+				OR age>=#{age} 	 			
+ 	 		</if>
+ 	 	</where>  -->
  	 	
+ 	 	<!-- overrides가 나오면 제거시켜주는 것(prefix(앞) / suffix(뒤)) -->
+ 	 	<trim prefix="where" suffixOverrides="or/and">
+ 	 		<if test="name!=null">
+ 	 			name like '%' || #{name} || '%' OR
+ 	 		</if>
+ 	 		<if test="age!=0">
+				 age>=#{age} 	 			
+ 	 		</if>
+ 	 	</trim>
  	 </select>
+ 	 
+ 	 
+ 	 <!-- 다중 update -->
+ 	 <update id="multiUpt" parameterType="part04.dto.MemDTO">
+ 	 	UPDATE mem
+ 	 	<!-- <set>
+ 	 	<if test="name!=null">
+ 	 	 	name = #{name},
+ 	 	</if>
+ 		<if test="age!=0">
+ 	 	 	age = #{age},
+ 	 	</if>
+ 	 	<if test="loc!=null">
+ 	 		loc = #{loc}
+ 	 	</if>
+ 	 	</set> -->
+ 	 	<trim prefix="set" suffixOverrides=",">
+ 	 		<if test="name!=null">
+ 	 		 	name = #{name},
+ 	 		</if>
+ 			<if test="age!=0">
+ 	 		 	age = #{age},
+ 	 		</if>
+ 	 		<if test="loc!=null">
+ 	 			loc = #{loc}
+ 	 		</if>
+ 	 	</trim>
+ 	 	WHERE num=#{num}
+ 	 </update>
  </mapper>
